@@ -1,0 +1,376 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.ui.datepicker
+ *= require jquery.ui.slider
+ *= require_self
+ *= require dataTables/src/demo_table_jui
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require_tree .
+ */
+body{
+	background-color: #dedede;
+}
+.Login_Form{
+	text-align: center;
+	margin:auto;
+	margin-top:90px;	
+	width:446px;
+	height:451px;
+	background-color: #dedede;
+	padding-bottom:0px;
+	padding-top:0px;
+	background-image: url('login.png');
+}
+
+.ChangePW_Form{
+	text-align: center;
+	margin:auto;
+	margin-top:0px;	
+	width:446px;
+	height:280px;
+	background-color: #ececec;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+.CreateEvent_Form{
+	text-align:center;
+	margin:auto;
+	margin-top:0px;	
+	width:510px;
+	height:428px;
+	background-color: #ececec;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+.loginText{
+	background-color: #ffffff;
+	border: Defaultpx inset #c0c0c0;
+	-webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  	box-shadow: inset 2px 2px 2px 0px #dddddd;
+  	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.Sign_Form{
+	text-align: left;
+	margin:auto;
+	margin-top:0px;	
+	width:841px;
+	background-color: #ececec;
+	padding-bottom:0.2px;
+	padding-top:0.1px;
+	padding-left:20px;
+}
+
+.nav2{
+	text-align: left;
+	margin:auto;
+	margin-top:0px;	
+	width:841px;
+	background-color: #dedede;
+	padding-bottom:0.2px;
+	padding-top:0.2px;
+	padding-left:20px;
+	font: 0.75em 'Helvetica', Helvetica;
+}
+
+.Greeting{
+	font: 0.7em 'Helvetica', Helvetica;
+	font-weight: bold;
+	color: #474747;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.homebuttons{
+	font: 0.5em 'Helvetica', Helvetica;
+	font-weight:none;
+	color: #006699;
+	padding-left:20px;
+	width:841px;
+	margin:auto;
+	margin-top:0px;	
+}
+
+h1{
+	font: 2em 'Helvetica', Helvetica;
+	font-weight: bold;
+	color: #474747;
+	-webkit-margin-before: 0.4em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+h2{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.profile_head{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #006699;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight:bold;
+}
+
+.post{
+	font: 0.85em 'Helvetica W01 Cn', Helvetica;
+	color: #000000;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.postevent{
+	font: 0.81em 'Helvetica W01 Cn', Helvetica;
+	color: #000000;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	margin-left:28px;
+}
+
+.csvTable{
+	font: 1em 'Helvetica Neue', Helvetica;
+	color: #000000;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	margin-right:15px;
+	margin-bottom: 20px;
+}
+
+.tealButton {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
+	background:-moz-linear-gradient( center top, #00a664 5%, #00a664 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a664', endColorstr='#00a664');
+	background-color:#00a664;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	font-weight:bold;
+	padding:6px 45px;
+	text-decoration:none;
+	margin-right:0px;
+}.tealButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
+	background:-moz-linear-gradient( center top, #00a664 5%, #00a664 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a664', endColorstr='#00a664');
+	background-color:#00a664;
+}.tealButton:active {
+	position:relative;
+	top:1px;
+}
+
+.exportButton {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
+	background:-moz-linear-gradient( center top, #00a664 5%, #00a664 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a664', endColorstr='#00a664');
+	background-color:#00a664;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	font-weight:bold;
+	padding:6px 45px;
+	text-decoration:none;
+	margin-right:15px;
+}.exportButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
+	background:-moz-linear-gradient( center top, #00a664 5%, #00a664 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00a664', endColorstr='#00a664');
+	background-color:#00a664;
+}.exportButton:active {
+	position:relative;
+	top:1px;
+}
+
+.redButton {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #810000), color-stop(1, #810000) );
+	background:-moz-linear-gradient( center top, #810000 5%, #810000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#810000', endColorstr='#810000');
+	background-color:#810000;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#ffffff;
+	font-family:arial;
+	font-size:18px;
+	font-weight:bold;
+	padding:6px 45px;
+	text-decoration:none;
+	margin-right:0px;
+}.redButton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #810000), color-stop(1, #810000) );
+	background:-moz-linear-gradient( center top, #810000 5%, #810000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#810000', endColorstr='#810000');
+	background-color:#810000;
+}.redButton:active {
+	position:relative;
+	top:1px;
+}
+
+.Signup_Errors{
+	list-style-type: none;
+	text-align:left;
+	margin-left:66px;
+	color:red;
+}
+
+.importLayout{
+	margin-right:15px;
+}
+.Main_Header{
+	height:120px;
+	width:841px;
+	padding:0 20px;
+	text-align: bottom;
+	margin:auto;
+	margin-top:10px;	
+	padding-bottom:0px;
+	padding-top:0px;
+	padding-left:20px;
+}
+
+.Main_Header h1{
+	float:left;
+	margin-top:0px;
+	color:#C4C1BD;
+	background-image: url('arsis-logo.png');
+	height:95px;
+	width:358px;
+	text-indent:-9999px;
+}
+
+.Main_Footer{
+	height:90px;
+	width:841px;
+	padding:0 20px;
+	text-align:right;
+	margin:auto;
+	margin-top:20px;	
+	padding-bottom:0px;
+	padding-top:0px;
+	padding-left:20px;
+}
+.Main_Footer h1{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	text-decoration: none;
+} 
+
+.nav{
+	font: 0.8em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	float: right;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+
+}
+.nav li{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	display: inline;
+	margin-right:5px;
+
+}
+.nav_links{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	text-decoration: none;
+} 
+.nav_links2{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	font-weight: bold;
+} 
+
+.notice{
+	height:20px;
+	margin:auto;
+	margin-top:0px;
+	margin-bottom:8px;
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	padding-bottom:4px;
+	padding-top:2px;
+}
+.valid_notice, .invalid_notice{
+	height:20px;
+	width:200px;
+	margin:auto;
+	margin-top:8px;
+	margin-bottom:8px;
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	padding-bottom:4px;
+	padding-top:2px;
+}
+.notice, .invalid_notice p, .valid_notice p{
+	text-align:center;
+	margin-top:2px;
+	font: 0.8em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	padding-bottom:1px;
+	padding-top:1px;
+}
+
+.notice{
+	background-color: transparent;
+	margin-top:0px;
+	width:500px;
+	margin:auto;
+	margin-top:0px;
+	margin-bottom:0px;
+	font: 1.3em 'Helvetica W01 Cn', Helvetica;
+	color: #006699;
+	font-weight:bold;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+.invalid_notice{
+	background-color: #FFCCCC;
+	border:1px solid red;
+}
+.valid_notice{
+	background-color: #CCFFCC;
+	border:1px solid green;
+}
+
+.User_Header{
+	background-color: rgba(0, 0, 0, .2);
+	border-radius: 18px;
+	margin:auto;
+	width:220px;
+	text-align:center;
+}

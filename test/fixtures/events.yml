@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  event_classification_id: 1
+  name: MyString
+  date: 2013-03-09
+  time: 2013-03-09 23:15:15
+  venue: MyString
+  is_open: false
+
+two:
+  id: 1
+  event_classification_id: 1
+  name: MyString
+  date: 2013-03-09
+  time: 2013-03-09 23:15:15
+  venue: MyString
+  is_open: false

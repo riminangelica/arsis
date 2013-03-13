@@ -1,0 +1,48 @@
+<div class="Sign_Form">
+  <h1>Official List of Resident Students</h1>
+  <script>
+  $(document).ready(function() {
+    $('#dormerlist').dataTable({
+      sPaginationType: "full_numbers",
+      bJQueryUI: true,
+      "sDom": 'T<"clear">lfrtip',
+      "oTableTools": {
+        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf"
+      }
+    })
+  });
+  </script>
+  <div class="csvTable">
+    <table id="dormerlist" class="display">
+      <thead>
+        <tr>
+          <th>ID NUMBER</th>
+          <th>NAME </th>
+          <th>YR & COURSE</th>
+          <th>ROOM</th>
+          <th>PROVINCE OF ORIGIN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.lastname %>, <%= user.firstname %> <%= user.middlename %></td>
+          <td><%= user.year %> <%= user.course.name %></td>
+          <td><%= user.room %></td>
+          <td><%= user.province %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+
+    <h1>Import Users</h1>
+    <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+    <% end %>
+    <br>
+    
+  </div>
+</div>

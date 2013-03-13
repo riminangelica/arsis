@@ -1,0 +1,12 @@
+<div class="ChangePW_Form"><br>
+	<h1>Change Password</h1><br>
+	<div class = "post">
+
+	<%= form_for(:user, :url => {:controller => 'users', :action => 'change_password'}) do |f|%>
+		<%= f.number_field :idnum, :value => @current_user.idnum, :class => "loginText", :style => "text-align: Center" %><br>
+		<%= f.password_field :password, :placeholder => "ENTER NEW PASSWORD", :class => "loginText", :style => "text-align: Center" %>
+		<%= f.password_field :password_confirmation, :placeholder => "RE-ENTER NEW PASSWORD", :class => "loginText", :style => "text-align: Center" %><br><br>
+    	<%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%>
+    <% end %>
+    </div>
+</div>

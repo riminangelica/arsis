@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ARSIS</title>
+	<%= favicon_link_tag "header/home.png" %>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="Main_Header">
+		<%unless session[:user_id]%>
+		<table>
+			<tr>
+				<td width="420">
+					<%= image_tag "arsis-logo.png" %>
+				</td>
+				<td width="420">
+					<div align="bottom">
+						<ul class="nav"><br><br><br><br><br>
+							<%= image_tag "header/home.png"%> <li><%= link_to :HOME , :home, class: "nav_links"%></li> 
+							<%= image_tag "header/contact.png"%> <li><%= link_to :CONTACT , :message, class: "nav_links"%></li> 
+							<%= image_tag "header/login.png"%> <li><%= link_to :LOGIN , :login, class: "nav_links"%></li>	
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<%= image_tag "header/navbar.png" %>
+		<%else%>
+		<table>
+			<tr>
+				<td width="420" rowspan="2">
+					<%= image_tag "arsis-logo.png" %>
+				</td>
+				<td width="370" align="right" class = "Greeting" align="bottom" >
+					<br><br>HELLO</br>
+					<%=@current_user.firstname%> <%=@current_user.lastname%></br>
+					<%=@current_user.year%> <%=@current_user.course.name%></br>
+					<%=@current_user.idnum%>
+				</td>
+				<td width="80"align="left">
+					<br>
+					<%= image_tag(@current_user.image.url, :size => "60x60") %>
+				</td>
+			</tr>
+			<tr>
+
+				<td width="490" height="30" colspan="2">
+
+					<ul class="nav">
+						<%= image_tag "header/home.png"%> <li><%= link_to :HOME , :home, class: "nav_links"%></li> 
+						<%= image_tag "header/contact.png"%> <li><%= link_to :CONTACT , :message, class: "nav_links"%></li> 
+						<%= image_tag "header/login.png"%> <li><%= link_to :LOGOUT , :logout, class: "nav_links"%></li>	
+					</ul>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</table>
+		<%= image_tag "header/navbar.png" %>
+		<%end%>
+	</div>
+	
+	<%unless session[:user_id]%>
+	<%else%>
+	<div class="homebuttons"><br><br>
+		<table border="0">
+			<tr>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewprofile.png", :size => "55x55"), "/profile/#{@current_user.id}" %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-trackprogress.png", :size => "55x55"), "/progress/#{@current_user.id}" %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewcalendar.png", :size => "55x55"), :eventcalendar %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-acctsettings.png", :size => "55x55"), :setting %></td>
+				<% if @current_user.utype == 'sec_gen' %>
+				<td><%= link_to (image_tag "homepagebuttons/button-createevent.png", :size => "55x55"), :newevent %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-myevents.png", :size => "55x55"), :regfile %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-uploadregfile.png", :size => "55x55"), :generatedb %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-generateconsolidated.png", :size => "55x55"), consolidated_path %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), "#" %></td>
+				
+				<td><%= link_to (image_tag "homepagebuttons/button-createevent.png", :size => "55x55"), "#" %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-myevents.png", :size => "55x55"), :viewmembers %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), :viewmembers %></td>
+				<% end %>
+			</tr>
+			<tr>
+				<td align="center">MY PROFILE</td>
+				<td align="center">TRACK<br>PROGRESS</td>
+				<td align="center">VIEW EVENT<br>CALENDAR</td>
+				<td align="center">ACCOUNT<br>SETTINGS</td>
+				<% if @current_user.utype == 'sec_gen' %>
+				<td align="center">CREATE<BR>EVENT</td>
+				<td align="center">UPLOAD<BR>REG FILE</td>
+				<td align="center">GENERATE<BR>DORMER LIST</td>
+				<td align="center">GENERATE<BR>REPORT</td>
+				<td align="center">VIEW DORM<BR>COUNCIL</td>
+
+				<td align="center">UPLOAD<BR>REG FILE</td>
+				<td align="center">MY EVENTS</td>
+				<td align="center">VIEW MEMBERS</td>
+				<% end %>
+			</tr>
+
+
+		</table>
+	</div>
+	<%end%>
+
+	<% if flash[:color]== "valid" %>
+	<div class="valid_notice">
+		<p><%= flash[:notice]%></p>
+	</div>
+	<% elsif flash[:color]== "invalid"%>
+	<div class="invalid_notice">
+		<p><%=flash[:notice]%></p>
+	</div>
+	<%else%>
+	<div class="notice">
+		<p><%=flash[:notice]%></p>
+	</div>
+	<%end%>
+	<%= yield %>
+
+	<div class="Main_Footer">
+		<%= image_tag "header/navbar.png" %>
+		<div class="nav2">
+			<table border="0">
+				<tr>
+					<td width="780">
+						<div align="right">
+							<h1><small>(C) 2013 ATENEO RESIDENT STUDENTS ASSOCIATION. ALL RIGHTS RESERVED.<br>
+								MAINTAINED BY THE OFFICE OF THE SECRETARY-GENERAL<br>
+								DEVELOPED BY SAI & CO.<br></small>
+							</h1>
+						</div>
+					</td>
+					<td>
+						<%= image_tag "saico.png" %>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

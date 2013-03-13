@@ -1,0 +1,54 @@
+<div class="Sign_Form">
+  <center><h1>Upload Registration File</h1>
+  <h2>Import a CSV File of your event's attendance.</h2><br>
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+    <% end %></center>
+    <br>
+  <script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('#eventlist').dataTable({
+      sPaginationType: "full_numbers",
+      //bJQueryUI: true,
+      "sDom": 'T<"clear">lfrtip',
+      "oTableTools": {
+        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf",
+        "sRowSelect": "multi"
+      },
+      "sScrollY": "200px",
+      "sDom": "frtiS",
+      "bDeferRender": true
+    })
+  });
+  </script>
+  <h1><center><small>List of Attendances in all Events</small></center></h1>
+  <div class="csvTable">
+    <table id="eventlist" class="display">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Event ID</th>
+          <th>Event Name</th>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Points</th>
+          <th>Roles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attendances.each do |a| %>
+        <tr>
+          <td><%= a.id %></td>
+          <td><%= a.event.id %></td>
+          <td><%= a.event.name %></td>
+          <td><%= a.user.id %></td>
+          <td><%= a.user.firstname %> <%= a.user.lastname %></td>
+          <td><%= a.points %></td>
+          <td><%= a.role %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="Sign_Form">
+  <h1>List of Events</h1>
+  <div class="csvTable">
+    <table id="events">
+      <tr>
+        <th>Event ID</th>
+        <th>Event Classification</th>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Venue</th>
+        <th>Open to Dormers</th>
+      </tr>
+      <% @events.each do |event| %>
+      <tr>
+        <td><%= event.id %></td>
+        <td><%= event.eventclass_id %></td>
+        <td><%= event.name %></td>
+        <td><%= event.date %></td>
+        <td><%= event.time %></td>
+        <td><%= event.venue %></td>
+        <td><%= event.is_open %></td>
+      </tr>
+      <% end %>
+    </table>
+    <br>
+  </div>
+</div>

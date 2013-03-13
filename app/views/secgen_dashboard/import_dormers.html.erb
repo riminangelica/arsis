@@ -1,0 +1,6 @@
+<h1>Import Dormers</h1>
+<%= form_tag(:controller => "secgen_dashoard", :action => "import", :method => :post) do %>
+	<%= file_field_tag(:file) %>
+
+	<%= submit_tag(:submit) %>
+<% end %>

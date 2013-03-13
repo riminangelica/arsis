@@ -1,0 +1,38 @@
+<div class="Sign_Form">
+  <h1>List of Dormers</h1>
+  <script>
+  $(document).ready(function() {
+    $('#dormerlist').dataTable({
+      sPaginationType: "full_numbers",
+      bJQueryUI: true,
+      "sDom": 'T<"clear">lfrtip',
+      "oTableTools": {
+        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf"
+      }
+    })
+  });
+  </script>
+  <div class="csvTable">
+    <table id="dormerlist" class="display">
+      <thead>
+        <tr>
+          <th>ID#</th>
+          <th>Full Name</th>
+          <th>Year & Course</th>
+          <th>Total Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.lastname %>, <%= user.firstname %> <%= user.middlename %></td>
+          <td><%= user.year %> <%= user.course.name %></td>
+          <td><%= user.totalpoints %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+</div>

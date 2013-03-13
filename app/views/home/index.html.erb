@@ -1,0 +1,48 @@
+<div class="Sign_Form">
+<h1><%=@current_user.firstname%>'s Profile </h1>
+<div class="post">
+	<table cellspacing="10" border="0">
+      <tr>
+        <td width=175 class="profile_head">ID Number</td>
+        <td width=200><%= @current_user.idnum %></td>
+        <td width=75 class="profile_head" align="left">Image</td>
+        <td width=100 rowspan="9" align="top"><%= image_tag(@current_user.image.url, :size => "200x200") %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">First Name & M.I. </td>
+        <td width=200><%= @current_user.firstname %> <%= @current_user.middlename %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Last Name</td>
+        <td width=200><%= @current_user.lastname %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Year & Course</td>
+        <td width=200><%= @current_user.year %> <%= @current_user.course.name %></td>
+        
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Contact Number</td>
+        <td width=200><%= @current_user.mobile %></td>
+        
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">E-mail Address</td>
+        <td width=200><%= @current_user.email %></td>
+        <!-- <td width=175 class="profile_head">Authorization Code</br>(for Sec Gen only)</td>
+        <td width=200></td> -->
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Room Number</td>
+        <td width=200><%= @current_user.room %></td>
+        <!-- <td width=175 class="profile_head">Captcha</td>
+        <td width=200></td> -->
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Province of Origin</td>
+        <td width=200><%= @current_user.province%></td>
+      </tr>
+    </table>
+    <br>
+</div>
+</div>

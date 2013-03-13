@@ -1,0 +1,75 @@
+<% @page_title = "ARSIS Account Activation | Signup" -%>
+<div class= "Sign_Form">
+  <h1>Account Activation</h1>
+  <h2>Fill out the form by supplying the correct information.</h2>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}, :html => { :multipart => true }) do |f| %>
+  <div class= "post">
+    <table cellspacing="10">
+      <tr>
+        <td width=175>ID Number</td>
+        <td width=200><%= f.number_field :idnum%></td>
+        <td width=175>Password</td>
+        <td width=200><%= f.password_field :password%></td>
+      </tr>
+      <tr>
+        <td width=175>First Name & M.I. </td>
+        <td width=200><%= f.text_field :firstname, :style=>'width: 208px;' %> <%= f.text_field :middlename, :style=>'width: 30px;' %></td>
+        <td width=175>Re-enter Password</td>
+        <td width=200><%= f.password_field :password_confirmation%></td>
+      </tr>
+      <tr>
+        <td width=175>Last Name</td>
+        <td width=200><%= f.text_field :lastname%></td>
+        <td width=175>Security Question</td>
+        <td width=200><%= f.text_field :security%></td>
+      </tr>
+      <tr>
+        <td width=175>Year & Course</td>
+        <td width=200><%= f.number_field :year, :style=>'width: 30px;' %> <%= f.collection_select(:course_id, Course.all, :id, :name)%></td>
+        <td width=175>Answer</td>
+        <td width=200><%= f.text_field :answer%></td>
+      </tr>
+      <tr>
+        <td width=175>Contact Number</td>
+        <td width=200><%= f.text_field :mobile%></td>
+        <td width=175>Image</td>
+        <td width=200><%= f.file_field :image%></td>
+      </tr>
+      <tr>
+        <td width=175>E-mail Address</td>
+        <td width=200><%= f.text_field :email%></td>
+        <td width=175>Authorization Code</br>(for Sec Gen only)</td>
+        <td width=200><%= text_field_tag :authorization_code%></td>
+      </tr>
+      <tr>
+        <td width=175>Room Number</td>
+        <td width=200><%= f.text_field :room%></td>
+        <td width=175>Captcha</td>
+        <td width=200></td>
+      </tr>
+      <tr>
+        <td width=175>Province of Origin</td>
+        <td width=200><%= f.text_field :province%></td>
+      </tr>
+    </table>
+    <small>Note: Your account will undergo verification by the Secretary General and the RH Administration</small>
+  </br>
+  <p align="right" margin-right="10">
+    <table cellspacing="10">
+      <tr>
+      <td width=420></td>
+      <td width=420 align="right"><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%><%= button_tag "Cancel", :type => 'button', :class => "redButton"%></td>
+      </tr>
+    </table>
+    </p>
+  <% end %>
+
+  <% if @user.errors.any? %>
+	<ul class="Signup_Errors">
+		<% for message_error in @user.errors.full_messages %>
+			<li>* <%= message_error %></li>
+	  	<% end %>
+	</ul>
+  <% end %>
+</div>
+</div>
