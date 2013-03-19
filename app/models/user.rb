@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
 	# NAME_REGEX = /^[0-9!@#$%]{2,4}$/i
 	# ID Number
 	validates :idnum, :presence => true, :uniqueness => true, :length => { :is => 6 }, :numericality => true;
-	set_primary_key :idnum
 	# First Name
 	validates :firstname, :presence => true, :length => { :in => 2..45 }
 	# Middle Name
