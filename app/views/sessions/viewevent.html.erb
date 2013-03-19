@@ -1,0 +1,42 @@
+<div class="Sign_Form">
+  <script>
+  $(document).ready(function() {
+    $('.best_in_place').best_in_place()
+  });
+  </script>
+<h1><%=@event.name%></h1>
+<div class="post">
+	<table cellspacing="10" border="0">
+      <tr>
+        <td width=175 class="profile_head">Event ID</td>
+        <td width=200><%= @event.id %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Event Classification</td>
+        <td width=200><%= @event.eventclass.name %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Event Name</td>
+        <td width=200><%= @event.name %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Starts at</td>
+        <td width=200><%= @event.starts_at.strftime("%b %d, %Y at %I:%m %p") %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Ends at</td>
+        <td width=200><%= @event.ends_at.strftime("%b %d, %Y at %I:%m %p") %></td>
+        
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Venue</td>
+        <td width=200><%= @event.venue %></td>
+      </tr>
+      <tr>
+        <td width=175 class="profile_head">Open to non-dormers</td>
+        <td width=200><%= @event.is_open %></td>
+      </tr>
+    </table>
+    <br>
+</div>
+</div>

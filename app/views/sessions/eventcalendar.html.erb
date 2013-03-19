@@ -5,14 +5,6 @@
     $('#eventlist').dataTable({
       sPaginationType: "full_numbers",
       //bJQueryUI: true,
-      "sDom": 'T<"clear">lfrtip',
-      "oTableTools": {
-        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf",
-        "sRowSelect": "multi"
-      },
-      "sScrollY": "200px",
-      "sDom": "frtiS",
-      "bDeferRender": true
     })
   });
   </script>
@@ -20,25 +12,29 @@
     <table id="eventlist" class="display">
       <thead>
         <tr>
-          <th>Event ID</th>
+          <th>Event ID&nbsp;&nbsp;&nbsp;&nbsp;</th>
           <th>Event Name</th>
           <th>Starts at</th>
           <th>Ends at</th>
           <th>Venue</th>
-          <th>Actions</th>
+          <% if @current_user.utype == "dorm_council" || @current_user.utype == "sec_gen" %>
+          <th>Actions&nbsp;&nbsp;&nbsp;</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
         <% @events.each do |event| %>
         <tr>
           <td><%= event.id %></td>
-          <td><%= event.name %></td>
+          <td><%= link_to event.name, viewevent_path(event.id) %></td>
           <td><%= event.starts_at.strftime("%b %d, %Y") %></td>
           <td><%= event.ends_at.strftime("%b %d, %Y") %></td>
           <td><%= event.venue %></td>
+          <% if @current_user.utype == "dorm_council" || @current_user.utype == "sec_gen" %>
           <td>
-            <%= link_to "Export to CSV", eventcsv_path(event.id) %>
+            <%= link_to "CSV", eventcsv_path(event.id) %>
           </td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>

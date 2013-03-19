@@ -1,33 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ARSIS</title>
-	<%= favicon_link_tag "header/home.png" %>
+	<title>ARSIS Online :: Ateneo Resident Student Information System</title>
+	<%= favicon_link_tag "ARSALOGO.png" %>
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<%unless session[:user_id]%>
+	<%else%>
 	<div class="Main_Header">
-		<%unless session[:user_id]%>
-		<table>
-			<tr>
-				<td width="420">
-					<%= image_tag "arsis-logo.png" %>
-				</td>
-				<td width="420">
-					<div align="bottom">
-						<ul class="nav"><br><br><br><br><br>
-							<%= image_tag "header/home.png"%> <li><%= link_to :HOME , :home, class: "nav_links"%></li> 
-							<%= image_tag "header/contact.png"%> <li><%= link_to :CONTACT , :message, class: "nav_links"%></li> 
-							<%= image_tag "header/login.png"%> <li><%= link_to :LOGIN , :login, class: "nav_links"%></li>	
-						</ul>
-					</div>
-				</td>
-			</tr>
-		</table>
-		<%= image_tag "header/navbar.png" %>
-		<%else%>
+		
 		<table>
 			<tr>
 				<td width="420" rowspan="2">
@@ -51,7 +35,7 @@
 					<ul class="nav">
 						<%= image_tag "header/home.png"%> <li><%= link_to :HOME , :home, class: "nav_links"%></li> 
 						<%= image_tag "header/contact.png"%> <li><%= link_to :CONTACT , :message, class: "nav_links"%></li> 
-						<%= image_tag "header/login.png"%> <li><%= link_to :LOGOUT , :logout, class: "nav_links"%></li>	
+						<%= image_tag "headerbuttons/header-logout.png"%> <li><%= link_to :LOGOUT , :logout, class: "nav_links"%></li>	
 					</ul>
 				</td>
 				<td>
@@ -59,9 +43,9 @@
 			</tr>
 		</table>
 		<%= image_tag "header/navbar.png" %>
-		<%end%>
+		
 	</div>
-	
+	<%end%>
 	<%unless session[:user_id]%>
 	<%else%>
 	<div class="homebuttons"><br><br>
@@ -70,17 +54,17 @@
 				<td><%= link_to (image_tag "homepagebuttons/button-viewprofile.png", :size => "55x55"), "/profile/#{@current_user.id}" %></td>
 				<td><%= link_to (image_tag "homepagebuttons/button-trackprogress.png", :size => "55x55"), "/progress/#{@current_user.id}" %></td>
 				<td><%= link_to (image_tag "homepagebuttons/button-viewcalendar.png", :size => "55x55"), :eventcalendar %></td>
-				<td><%= link_to (image_tag "homepagebuttons/button-acctsettings.png", :size => "55x55"), :setting %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-acctsettings.png", :size => "55x55"), setting_path(@current_user.id) %></td>
 				<% if @current_user.utype == 'sec_gen' %>
 				<td><%= link_to (image_tag "homepagebuttons/button-createevent.png", :size => "55x55"), :newevent %></td>
 				<td><%= link_to (image_tag "homepagebuttons/button-myevents.png", :size => "55x55"), :regfile %></td>
 				<td><%= link_to (image_tag "homepagebuttons/button-uploadregfile.png", :size => "55x55"), :generatedb %></td>
 				<td><%= link_to (image_tag "homepagebuttons/button-generateconsolidated.png", :size => "55x55"), consolidated_path %></td>
-				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), "#" %></td>
-				
-				<td><%= link_to (image_tag "homepagebuttons/button-createevent.png", :size => "55x55"), "#" %></td>
-				<td><%= link_to (image_tag "homepagebuttons/button-myevents.png", :size => "55x55"), :viewmembers %></td>
-				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), :viewmembers %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), :dormcouncil %></td>
+				<% elsif @current_user.utype == 'dorm_council' %>
+				<td><%= link_to (image_tag "homepagebuttons/button-createevent.png", :size => "55x55"), :newevent %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-myevents.png", :size => "55x55"), :regfile %></td>
+				<td><%= link_to (image_tag "homepagebuttons/button-viewlist.png", :size => "55x55"), :generatedb %></td>
 				<% end %>
 			</tr>
 			<tr>
@@ -94,10 +78,10 @@
 				<td align="center">GENERATE<BR>DORMER LIST</td>
 				<td align="center">GENERATE<BR>REPORT</td>
 				<td align="center">VIEW DORM<BR>COUNCIL</td>
-
+				<% elsif @current_user.utype == 'dorm_council' %>
+				<td align="center">CREATE<BR>EVENT</td>
 				<td align="center">UPLOAD<BR>REG FILE</td>
-				<td align="center">MY EVENTS</td>
-				<td align="center">VIEW MEMBERS</td>
+				<td align="center">VIEW ALL<br>DORMERS</td>
 				<% end %>
 			</tr>
 
@@ -105,22 +89,47 @@
 		</table>
 	</div>
 	<%end%>
+	<%unless session[:user_id]%>
+		<div class="Login_Notice">
+		<% if flash[:color]== "invalid"%>
+		<div class="invalid_notice">
+			<p><%=flash[:notice]%></p>
+		</div>
+		<%end%>
 
-	<% if flash[:color]== "valid" %>
-	<div class="valid_notice">
-		<p><%= flash[:notice]%></p>
-	</div>
-	<% elsif flash[:color]== "invalid"%>
-	<div class="invalid_notice">
-		<p><%=flash[:notice]%></p>
+		<% if flash[:color]== "valid" %>
+		<div class="valid_notice">
+			<p><%= flash[:notice]%></p>
+		</div>
+		<%elsif flash[:color]==nil%>
+		<div class="notice">
+			<p><%=flash[:notice]%></p>
+		</div>
+		<%end%>
 	</div>
 	<%else%>
-	<div class="notice">
-		<p><%=flash[:notice]%></p>
-	</div>
+	
+		<% if flash[:color]== "invalid"%>
+		<div class="invalid_notice">
+			<p><%=flash[:notice]%></p>
+		</div>
+		<%end%>
+
+		<% if flash[:color]== "valid" %>
+		<div class="valid_notice">
+			<p><%= flash[:notice]%></p>
+		</div>
+		<%elsif flash[:color]==nil%>
+		<div class="notice">
+			<p><%=flash[:notice]%></p>
+		</div>
+		<%end%>
 	<%end%>
 	<%= yield %>
 
+
+	<%unless session[:user_id]%>
+	<%else%>
 	<div class="Main_Footer">
 		<%= image_tag "header/navbar.png" %>
 		<div class="nav2">
@@ -141,5 +150,6 @@
 			</table>
 		</div>
 	</div>
+	<% end %>
 </body>
 </html>

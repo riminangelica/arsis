@@ -1,48 +1,53 @@
-<div class="Sign_Form">
-<h1><%=@current_user.firstname%>'s Profile </h1>
-<div class="post">
-	<table cellspacing="10" border="0">
+<div class="Profile_Form" align="center">
+    <table class="Profile" border="0" align="center">
       <tr>
-        <td width=175 class="profile_head">ID Number</td>
-        <td width=200><%= @current_user.idnum %></td>
-        <td width=75 class="profile_head" align="left">Image</td>
-        <td width=100 rowspan="9" align="top"><%= image_tag(@current_user.image.url, :size => "200x200") %></td>
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">First Name & M.I. </td>
-        <td width=200><%= @current_user.firstname %> <%= @current_user.middlename %></td>
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">Last Name</td>
-        <td width=200><%= @current_user.lastname %></td>
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">Year & Course</td>
-        <td width=200><%= @current_user.year %> <%= @current_user.course.name %></td>
-        
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">Contact Number</td>
-        <td width=200><%= @current_user.mobile %></td>
-        
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">E-mail Address</td>
-        <td width=200><%= @current_user.email %></td>
-        <!-- <td width=175 class="profile_head">Authorization Code</br>(for Sec Gen only)</td>
-        <td width=200></td> -->
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">Room Number</td>
-        <td width=200><%= @current_user.room %></td>
-        <!-- <td width=175 class="profile_head">Captcha</td>
-        <td width=200></td> -->
-      </tr>
-      <tr>
-        <td width=175 class="profile_head">Province of Origin</td>
-        <td width=200><%= @current_user.province%></td>
+        <td width="265"><%= image_tag(@current_user.image.url, :size => "226x223") %></td>
+        <td align="left">
+          <font face="Helvetica" size="5px" color="white">
+            <b><%= @current_user.lastname %>, <%= @current_user.firstname %> <%= @current_user.middlename %></b>
+          </font>
+          <br>
+          <font face="Helvetica" size="2.8px" color="#005a62">
+            <b>ID NO</b>
+          </font>
+          <font face="Helvetica" size="3px" color="white">
+            <b><%= @current_user.idnum %><br><br>
+              <%= image_tag "profile/contacicon.png", :size => "13x14" %> <%= @current_user.mobile %><br>
+              <%= image_tag "profile/emailicon.png", :size => "17x13" %> <%= @current_user.email %></b>
+          </font>
+          <br><br>
+          <font face="Helvetica" size="3px" color="#005a62">
+            <b>Year & Course</b>
+          </font>
+          <font face="Helvetica" size="4.8px" color="white">
+            <b><%= @current_user.year %> <%= @current_user.course.name %></b>
+          </font>
+          <br>
+          <font face="Helvetica" size="3px" color="#005a62">
+            <b>Room No.</b>
+          </font>
+          <font face="Helvetica" size="4.px" color="white">
+            <b><%= @current_user.room %></b>
+          </font>
+          <br>
+          <font face="Helvetica" size="3px" color="#005a62">
+            <b>Province of Origin</b>
+          </font>
+          <font face="Helvetica" size="4.px" color="white">
+            <b><%= @current_user.province %></b>
+          </font>
+          <br><br>
+          <font face="Helvetica" size="3px" color="#005a62">
+            <b>Position</b>
+          </font>
+          <font face="Helvetica" size="4.px" color="white">
+            <b><%= @current_user.position %></b>
+          </font>
+        </td>
+        <td width="80" style="vertical-align: top">
+            <br><%= image_tag "profile/dormcouncilicon.png" %>
+          
+        </td>
       </tr>
     </table>
-    <br>
-</div>
 </div>

@@ -1,0 +1,13 @@
+<div class="Login_Form"><br>
+	<%= image_tag "login-logo.png" %>
+	<h1>Reset Password</h1>
+	<h2><%= @user.security %><br>	</h2>
+	
+
+	 <%= form_for(:password_resets, :url => {:controller => 'password_resets', :action => 'reset', :method => :post}) do |f| %>
+		<h2><%= f.text_field :answer, :placeholder => 'ANSWER', :class => "loginText", :style => "text-align: Center" %></h2>
+		<%= f.hidden_field :id, :value => @user.id %>
+	<%= f.submit "Reset Password", :class => "tealButton" %><%end%>
+	<%= button_to "Cancel", :home, :type => 'button', :class => "redButton", :style => "width:231px"%>
+	
+</div>

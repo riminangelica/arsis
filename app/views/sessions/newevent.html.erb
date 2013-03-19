@@ -6,49 +6,53 @@
   <script>
   $(document).ready(function() {
     $('#event_starts_at').datetimepicker({
-      timeFormat: "hh:mm:ss",
+      timeFormat: "HH:mm:ss",
       dateFormat: "yy-mm-dd"
     });
     $('#event_ends_at').datetimepicker({
-      timeFormat: "hh:mm tt"
+      timeFormat: "HH:mm:ss",
+      dateFormat: "yy-mm-dd"
     });
   });
   </script>
-  <div class= "postevent" align="left">
+  <div class= "postevent" align="center">
     <%= form_for(:event, :url => {:controller => 'events', :action => 'addevent'}) do |f| %>
-    <table cellspacing="5" border="0">
+    <table cellspacing="0" border="0">
       <tr>
-        <td width=175>Event Classification</td>
+        <td width=200>Event Classification</td>
         <td width=200><%= f.collection_select(:eventclass_id, Eventclass.all, :id, :name)%></td>
       </tr>
       <tr>
-        <td width=175>Event Name</td>
-        <td width=200><%= f.text_field :name %></td>
+        <td width=200>Event Name</td>
+        <td width=200><%= f.text_field :name, :style=>'width: 200px;' %></td>
       </tr>
       <tr>
-        <td width=175>Starts at</td>
-        <td width=200><%= f.text_field :starts_at %> </td>
+        <td width=200>Starts at</td>
+        <td width=200 class="csvTable"><%= f.text_field :starts_at, :style=>'width: 200px;' %> </td>
       </tr>
       <tr>
-        <td width=175>Ends at</td>
-        <td width=200><%= f.text_field :ends_at %> </td>
+        <td width=200>Ends at</td>
+        <td width=200><%= f.text_field :ends_at, :style=>'width: 200px;' %> </td>
       </tr>
       <tr>
-        <td width=175><%= f.check_box :allday %> All-day</td>
+        <td width=200><%= f.check_box :allday %> All-day</td>
         <td width=200></td>
       </tr>
       <tr>
-        <td width=175>Venue</td>
-        <td width=200><%= f.text_field :venue %></td>
+        <td width=200>Venue</td>
+        <td width=200><%= f.text_field :venue, :style=>'width: 200px;' %></td>
       </tr>
       <tr>
-        <td width=175><%= f.check_box :is_open %> Open to non-dormers</td>
+        <td width=200><%= f.check_box :is_open %> Open to non-dormers</td>
         <td width=200></td>
       </tr>
       <tr>
-        <td width=420 align="center" colspan="2"><br><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%><%= button_tag "Cancel", :type => 'button', :class => "redButton"%></td>
+        <td width=200 align="right"><br><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%><% end %></td>
+        <td width=200 align="left"><br><%= button_to "Cancel", :home, :type => 'button', :class => "redButton"%></td>
       </tr>
-    </table>
-    <% end %>
+      <tr></tr>
+      </table>
+
+
+    </div>
   </div>
-</div>

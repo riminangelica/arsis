@@ -1,68 +1,73 @@
 <% @page_title = "ARSIS Account Activation | Signup" -%>
+<%= image_tag "header/navbar.png", :style => 'margin-left:255px' %><small><br></small>
 <div class= "Sign_Form">
-  <h1>Account Activation</h1>
-  <h2>Fill out the form by supplying the correct information.</h2>
+  <table>
+    <tr>
+      <td><h1>Account Activation</h1>
+        <h2>Fill out the form by supplying the correct information.</h2>
+      </td>
+      <td width="450"><%= image_tag "arsis-logo.png", :align => 'right' %>
+      </td>
+    </tr>
+  </table>
+  
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}, :html => { :multipart => true }) do |f| %>
   <div class= "post">
-    <table cellspacing="10">
+    <table cellspacing="5" border="0">
       <tr>
         <td width=175>ID Number</td>
-        <td width=200><%= f.number_field :idnum%></td>
+        <td width=200><%= f.number_field :idnum, :placeholder => "Must be 6 digits only" %></td>
         <td width=175>Password</td>
-        <td width=200><%= f.password_field :password%></td>
+        <td width=200><%= f.password_field :password, :placeholder => "Must be at least 6 characters"%></td>
       </tr>
       <tr>
         <td width=175>First Name & M.I. </td>
-        <td width=200><%= f.text_field :firstname, :style=>'width: 208px;' %> <%= f.text_field :middlename, :style=>'width: 30px;' %></td>
+        <td width=200><%= f.text_field :firstname, :style=>'width: 208px;' , :placeholder => "John"%> <%= f.text_field :middlename, :style=>'width: 30px;' , :placeholder => "D."%></td>
         <td width=175>Re-enter Password</td>
-        <td width=200><%= f.password_field :password_confirmation%></td>
+        <td width=200><%= f.password_field :password_confirmation, :placeholder => "Must be at least 6 characters" %></td>
       </tr>
       <tr>
         <td width=175>Last Name</td>
-        <td width=200><%= f.text_field :lastname%></td>
+        <td width=200><%= f.text_field :lastname, :value => @user.lastname, :placeholder => "Appleseed" %></td>
         <td width=175>Security Question</td>
-        <td width=200><%= f.text_field :security%></td>
+        <td width=200><%= f.text_field :security, :placeholder => "What was your first pet's name?"%></td>
       </tr>
       <tr>
         <td width=175>Year & Course</td>
-        <td width=200><%= f.number_field :year, :style=>'width: 30px;' %> <%= f.collection_select(:course_id, Course.all, :id, :name)%></td>
+        <td width=200><%= f.number_field :year, :style=>'width: 30px;', :placeholder => "1" %> <%= f.collection_select(:course_id, Course.all, :id, :name)%></td>
         <td width=175>Answer</td>
-        <td width=200><%= f.text_field :answer%></td>
+        <td width=200><%= f.text_field :answer, :placeholder => "Gazebo"%></td>
       </tr>
       <tr>
         <td width=175>Contact Number</td>
-        <td width=200><%= f.text_field :mobile%></td>
-        <td width=175>Image</td>
+        <td width=200><%= f.text_field :mobile, :placeholder => "09171234567"%></td>
+        <td width=175>Image <small> (thumbnail size)<br>
+          <i>ex. 300x300</i></small></td>
         <td width=200><%= f.file_field :image%></td>
       </tr>
       <tr>
         <td width=175>E-mail Address</td>
-        <td width=200><%= f.text_field :email%></td>
-        <td width=175>Authorization Code</br>(for Sec Gen only)</td>
+        <td width=200><%= f.text_field :email, :placeholder => "johnappleseed@gmail.com"%></td>
+        <td width=175>Authorization Code</br><small>(for Sec Gen only)</small></td>
         <td width=200><%= text_field_tag :authorization_code%></td>
       </tr>
       <tr>
         <td width=175>Room Number</td>
-        <td width=200><%= f.text_field :room%></td>
-        <td width=175>Captcha</td>
-        <td width=200></td>
+        <td width=200><%= f.text_field :room, :placeholder => "UDE 123"%></td>
+        <td width=175></td>
+        <td width=200 align="right"><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%></td>
       </tr>
       <tr>
         <td width=175>Province of Origin</td>
-        <td width=200><%= f.text_field :province%></td>
+        <td width=200><%= f.text_field :province, :placeholder => "Lipa, Batangas"%><% end %></td>
+        <td width=175></td>
+        <td width=200 align=right><%= button_to "Cancel", :home, :type => 'button', :class => "redButton"%></td>
+        
       </tr>
     </table>
     <small>Note: Your account will undergo verification by the Secretary General and the RH Administration</small>
   </br>
-  <p align="right" margin-right="10">
-    <table cellspacing="10">
-      <tr>
-      <td width=420></td>
-      <td width=420 align="right"><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%><%= button_tag "Cancel", :type => 'button', :class => "redButton"%></td>
-      </tr>
-    </table>
-    </p>
-  <% end %>
+
 
   <% if @user.errors.any? %>
 	<ul class="Signup_Errors">
@@ -73,3 +78,10 @@
   <% end %>
 </div>
 </div>
+<%= image_tag "header/navbar.png", :style => 'margin-left:255px' %><div class="Main_Footer"><div class="nav2"><div align="center">
+              <small>(C) 2013 ATENEO RESIDENT STUDENTS ASSOCIATION. ALL RIGHTS RESERVED.<br>
+                MAINTAINED BY THE OFFICE OF THE SECRETARY-GENERAL<br>
+                DEVELOPED BY SAI & CO.<br></small>
+            </div>
+          </div>
+        </div>

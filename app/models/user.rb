@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
 	has_many :events, :through => :attendances
 	belongs_to :role
 
-	has_attached_file :image, :style => { :small => "150x150>" },
+	has_attached_file :image, :style => { :small => "150x150#", :large => "500x500>" },
 	:url => "/assets/images/users/:id/:style/:basename.:extension",
-	:path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension"
+	:path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension",
+	default_url: "assets/attachment/missing_:style.png"
 
 	validates_attachment_presence :image
 	validates_attachment_size :image, :less_than => 700.kilobytes
@@ -30,33 +31,40 @@ class User < ActiveRecord::Base
 	# Last Name
 	validates :lastname, :presence => true, :length => { :in => 2..45 }
 	# Year
-	validates :year, :presence => true, :length => { :is => 1 }, :numericality => true;
+	validates :year, :presence => true, :length => { :is => 1 }, :numericality => { :less_than_or_equal_to => 5 }
 	# Course
 	validates :course_id, :presence => true
 	# Province of Origin
 	validates :province, :presence => true, :length => { :in => 2..45 }
 	# Mobile Number
-	validates :mobile, :presence => true, :uniqueness => true, :length => { :is => 11 }, :numericality => true;
+	validates :mobile, :presence => true, :uniqueness => true, :length => { :in => 9..11 }
 	# Email
 	validates :email, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
 	# Room Number
-	validates :room, :presence => true, :length => { :in => 3..6 }
+	validates :room, :presence => true, :length => { :in => 3..7 }
 	# Password Confirmation
 	validates :password, :confirmation => true #password_confirmation attr
 	# Only on Create so other actions like update password attribute can be nil
 	# Password
-	validates_length_of :password, :in => 6..20, :on => :create
+	validates :password, :length => {:in => 6..20 }, :presence => :true
 	# Security Question
 	validates :security, :presence => true, :length => { :in => 2..80 }
 	# Answer
 	validates :answer, :presence => true, :length => { :in => 2..45 }
 
 	# Adds accessible attributes to user model
-	attr_accessible :idnum, :firstname, :middlename, :lastname, :year, :course_id, :province, :mobile, :email, :room, :password, :password_confirmation, :security, :answer, :is_sec_gen, :image, :position
+	attr_accessible :idnum, :firstname, :middlename, :lastname, :year, :course_id, :province, :mobile, :email, :room, :password, :password_confirmation, :security, :answer, :is_sec_gen, :image, :position, :utype
 
 	# take a username/email and password to find out if that matches a user in the database
 	# Needs a query to match username/email and, 
 	# if found, encrypt the entered password and compare it with the encrypted password in the database.
+
+	def generate_token(column)
+		begin
+			self[column] = SecureRandom.urlsafe_base64
+		end while User.exists?(column => self[column])
+	end
+
 	def self.authenticate(idnum_or_email="", login_password="")
 
 		if  EMAIL_REGEX.match(idnum_or_email)    
@@ -89,6 +97,10 @@ class User < ActiveRecord::Base
   	# (2) to assign the password attr_accessor to nil
   	def clear_password
   		self.password = nil
+  	end
+
+  	def password_present?
+  		!password.nil?
   	end
 
   	def encrypt_answer
@@ -128,14 +140,23 @@ class User < ActiveRecord::Base
 	end
 
 	def totalpoints
-    	x = 0
+		x = 0
 
-    	attendances = Attendance.where(:user_id => id)
+		attendances = Attendance.where(:user_id => id)
 
-    	attendances.each do |a|
-    		x += a.points
-    	end
+		attendances.each do |a|
+			x += a.points
+		end
 
-    	return x
-    end
+		return x
+	end
+
+	def send_password_reset
+		generate_token(:password_reset_token)
+		self.password_reset_sent_at = Time.zone.now
+		save! :validate => false
+		UserMailer.password_reset(self).deliver
+	end
+
+
 end

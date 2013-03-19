@@ -1,0 +1,20 @@
+<div class="Login_Form"><br>
+  <%= image_tag "login-logo.png" %>
+  <h1>Reset Password</h1>
+  <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <% if @user.errors.any? %>
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% for message in @user.errors.full_messages %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+    <%= f.password_field :password, :placeholder => 'PASSWORD', :class => "loginText", :style => "text-align: Center" %>
+    <%= f.password_field :password_confirmation, :placeholder => 'RE-ENTER PASSWORD', :class => "loginText", :style => "text-align: Center" %>
+  <%= f.submit "Update Password", :class => "tealButton" %>
+  <% end %>
+  <%= button_to "Cancel", :home, :type => 'button', :class => "redButton", :style => "width:243px"%>
+</div>

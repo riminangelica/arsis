@@ -2195,8 +2195,8 @@ TableTools.BUTTONS = {
 				lines = text.split('\n').length,
 				len = this.s.dt.nTFoot === null ? lines-1 : lines-2,
 				plural = (len==1) ? "" : "s";
-			this.fnInfo( '<h6>Table copied</h6>'+
-				'<p>Copied '+len+' row'+plural+' to the clipboard.</p>',
+			this.fnInfo( '<h1>Table copied</h1>'+
+				'<h2>Copied '+len+' row'+plural+' to the clipboard.</h2>',
 				1500
 			);
 		}
@@ -2225,7 +2225,7 @@ TableTools.BUTTONS = {
 	} ),
 
 	"print": $.extend( {}, TableTools.buttonBase, {
-		"sInfo": "<h6>Print view</h6><p>Please use your browser's print function to "+
+		"sInfo": "<h1>Print view</h1><h2>Please use your browser's print function to "+
 		  "print this table. Press escape when finished.",
 		"sMessage": null,
 		"bShowAll": true,

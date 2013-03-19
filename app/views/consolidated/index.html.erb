@@ -1,13 +1,32 @@
 <div class="Sign_Form">
-  <h1>List of Dormers</h1>
+  <h1>Consolidated Resident Retention Points Report</h1>
   <script>
   $(document).ready(function() {
     $('#dormerlist').dataTable({
       sPaginationType: "full_numbers",
-      bJQueryUI: true,
+      //bJQueryUI: true,
       "sDom": 'T<"clear">lfrtip',
       "oTableTools": {
-        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf"
+        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf",
+
+        "aButtons": [
+        "copy",
+        {
+          "sExtends": "xls",
+          "sFileName": "Consolidated Resident Retention Points Report.xls"
+        },
+        // {
+        //   "sExtends": "pdf",
+        //   "sTitle": "ARSIS Consolidated Report",
+        //   "sPdfMessage": "",
+        //   "sFileName": "Consolidated Resident Retention Points Report.pdf",
+        //   "sPdfOrientation": "landscape"
+        // },
+        {
+          "sExtends": "print",
+          "sMessage": "<div class=\"Sign_Form\"><img src=\"https://www.facebook.com/ajax/messaging/attachment.php?attach_id=2d65eef9977c3448521b2ab1beba3ca0&mid=id.344732965638721&hash=AQADdboe0cxgsbOj\" width=\"841px\"></div>"
+        }
+        ]
       }
     })
   });

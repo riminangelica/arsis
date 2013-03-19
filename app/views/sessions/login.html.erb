@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>ARSIS</title>
-  <link rel="shortcut icon" href="https://photos-2.dropbox.com/t/0/AAA3X5WnCQjYtfusLskvrvlU8GN3nhf6RoZpm6bX7_i7YA/12/15968789/png/32x32/3/_/1/2/header-home.png/YwEL22IGDB4oAW_S2eMwgP8ZhJUmXEdJS0RvZ4u2-i0?size=1024x768" />
+  <%= favicon_link_tag "header/home.png" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,13 +10,13 @@
 <body>
 <div class= "Login_Form">
 	<br><br><br><h2><b>WELCOME TO</b></h2>
-	<img src="https://photos-6.dropbox.com/t/0/AAC90IsdkxL-wwNSGHU0H4EICCSSELQalG0NlMs2xwpOqg/12/15968789/png/32x32/3/_/1/2/arsis-logo.png/TvaZgWqLuUbovuvQz1kueIHXr4mdxl0sfBVB1VpsyE0?size=1024x768">
+	<%= image_tag "login-logo.png" %>
 	<%= form_tag(:action => 'login_attempt') do %>
 		<%= text_field_tag(:idnum_or_email, nil, :placeholder => 'ID NUMBER', :class => "loginText", :style => "text-align: Center") %><br>
 		<%= password_field_tag :login_password, nil, :placeholder => 'PASSWORD', :class => "loginText",  :style => "text-align: Center" %><br>
 		<%= submit_tag("Log In", :class => "tealButton", :style => "text-align: Center")%>
 	<% end %>
-	<small><%= link_to "Forgot password?" , "#", class: "nav_links" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Activate Account" , :signup, class: "nav_links" %></small>
+	<small><%= link_to "Forgot password?" , new_password_reset_path, class: "nav_links" %>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Activate Account" , :signup, class: "nav_links" %></small>
 </div>
 </body>
 </html>

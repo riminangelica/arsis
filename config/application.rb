@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'csv'
-require 'iconv'
 require 'rails/all'
 
 if defined?(Bundler)
@@ -66,18 +65,18 @@ module UserAuth
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
 
-    config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :domain               => "gmail.com",
-      :user_name            => "arsistant@gmail.com",
-      :password             => "saico2013",
-      :authentication       => :plain,
-      :enable_starttls_auto => true
-    }
+    # config.action_mailer.smtp_settings = {
+    #   :address              => "smtp.gmail.com",
+    #   :port                 => 587,
+    #   :domain               => "gmail.com",
+    #   :user_name            => "arsistant@gmail.com",
+    #   :password             => "saico2013",
+    #   :authentication       => :plain,
+    #   :enable_starttls_auto => true
+    # }
 
     config.action_mailer.default_url_options = {
-          :host => "gmail.com"
+          :host => "localhost:3000"
     }
 end
 end

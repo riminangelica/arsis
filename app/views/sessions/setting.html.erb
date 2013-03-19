@@ -1,21 +1,24 @@
 <div class="Sign_Form">
-<h1><%=@current_user.firstname%>'s Account Settings </h1>
-<div class="post">
-<%= form_for(:user, :url => {:controller => 'users', :action => 'edit'}, :html => { :multipart => true }) do |f| %>
-	<table cellspacing="10" border="0">
+  <h1><%=@current_user.firstname%>'s Account Settings </h1>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+      <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  <div class="post">
+    <%= form_for(:user, :url => {:controller => 'users', :action => 'edit'}, :html => { :multipart => true }) do |f| %>
+    <table cellspacing="5" border="0">
       <tr>
         <td width=175 class="profile_head">ID Number</td>
-        <td width=200><%= f.text_field :idnum, :value => @current_user.idnum %></td>
-        <!-- <td width=175 class="profile_head">Password</td>
-        <td width=200><%= @current_user.password%></td> -->
+        <td width=200><%= f.text_field :idnum, :value => @current_user.idnum, :readonly => true %></td>
         <td width=175 class="profile_head" colspan="2">Security Question</td>
         <td width=200 colspan="2"><%= f.text_field :security, :value => @current_user.security%></td>
       </tr>
       <tr>
         <td width=175 class="profile_head">First Name & M.I. </td>
         <td width=200><%= f.text_field :firstname, :value => @current_user.firstname, :style=>'width: 212px;' %> <%= f.text_field :middlename, :value => @current_user.middlename, :style=>'width: 30px;' %></td>
-        <!-- <td width=175 class="profile_head">Re-enter Password</td>
-        <td width=200><%= @current_user.password_confirmation %></td> -->
         <td width=175 class="profile_head" colspan="2">Answer</td>
         <td width=200 colspan="2"><%= f.text_field :answer, :value => @current_user.answer%></td>
       </tr>
@@ -25,7 +28,6 @@
         <td width=75 class="profile_head" align="left">Image</td>
         <td width=100 rowspan="3"><%= image_tag(@current_user.image.url, :size => "100x100") %></td>
         <td width=85 colspan="2" align="right"><%= f.file_field :image%></td>
-        <!-- <td width=102.5 rowspan="2"></td> -->
       </tr>
       <tr>
         <td width=175 class="profile_head">Year & Course</td>
@@ -35,38 +37,27 @@
       <tr>
         <td width=175 class="profile_head">Contact Number</td>
         <td width=200><%= f.text_field :mobile, :value => @current_user.mobile%></td>
-        
+        <td></td>
+        <td width=420 align="right" colspan="2"><div class="profile_head">Password <%= f.password_field :password, :size => "20px" %></div></td>
       </tr>
       <tr>
         <td width=175 class="profile_head">E-mail Address</td>
-        <td width=200><%= f.text_field :email, :value => @current_user.email%></td>
-        <!-- <td width=175 class="profile_head">Authorization Code</br>(for Sec Gen only)</td>
-        <td width=200></td> -->
+        <td width=200><%= f.text_field :email, :value => @current_user.email%></td>        
+        <td align="right" colspan="4"><b><u><%= link_to "Change Password", changepw_path(@current_user.idnum), class: "nav_links2" %></b></u></td>
       </tr>
       <tr>
         <td width=175 class="profile_head">Room Number</td>
         <td width=200><%= f.text_field :room, :value => @current_user.room%></td>
-        <!-- <td width=175 class="profile_head">Captcha</td>
-        <td width=200></td> -->
-        <td></td>
-        <td width=420 align="right" colspan="3"><b><u><%= link_to "Change Password", :changepw, class: "nav_links2" %></b></u>
-        </td>
+        <td width=420 align="right" colspan="4"><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%></td>
       </tr>
       <tr>
         <td width=175 class="profile_head">Province of Origin</td>
-        <td width=200><%= f.text_field :province, :value => @current_user.province%></td>
-        <td></td>
-        <td width=420 align="right" colspan="3"><%= f.submit :Submit, :class => "tealButton", :style => "text-align: Right"%><%= button_tag "Cancel", :type => 'button', :class => "redButton"%></td>
+        <td width=200><%= f.text_field :province, :value => @current_user.province%><% end %></td>
+        <td width=420 align="right" colspan="4"><%= button_to "Cancel", :home, :type => 'button', :class => "redButton"%></td>
       </tr>
     </table>
-<% end %>
 
-<% if @current_user.errors.any? %>
-  <ul class="Edit_Errors">
-    <% for message_error in @current_user.errors.full_messages %>
-      <li>* <%= message_error %></li>
-      <% end %>
-  </ul>
-  <% end %>
-</div>
+
+    
+  </div>
 </div>

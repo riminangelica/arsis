@@ -1,26 +1,51 @@
 <div class="Sign_Form">
-  <h1>Official List of Resident Students</h1>
+  <% if @current_user.utype == 'sec_gen' %>
+  <center>
+    <h1>Import Dormer Database</h1>
+    <h2>Import a CSV File of the list of dormers.</h2><br>
+    <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+    <% end %>
+    <br>
+  </center>
+  <% end %>
+  <h1><small>Official List of Resident Students</small></h1>
   <script>
   $(document).ready(function() {
     $('#dormerlist').dataTable({
       sPaginationType: "full_numbers",
-      bJQueryUI: true,
+      //bJQueryUI: true,
       "sDom": 'T<"clear">lfrtip',
       "oTableTools": {
-        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf"
+        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf",
+
+        "aButtons": [
+        "copy",
+        // {
+        //   "sExtends": "pdf",
+        //   "sTitle": "Report Name",
+        //   "sPdfMessage": "Summary Info",
+        //   "sFileName": "Official List of Resident Students.pdf",
+        //   "sPdfOrientation": "landscape"
+        // },
+        "print"
+        ]
       }
     })
   });
   </script>
-  <div class="csvTable">
+  <div class="dormersTable">
     <table id="dormerlist" class="display">
       <thead>
         <tr>
-          <th>ID NUMBER</th>
+          <th>ID NO.&nbsp;</th>
           <th>NAME </th>
-          <th>YR & COURSE</th>
+          <th>YR & COURSE&nbsp;&nbsp;&nbsp;</th>
           <th>ROOM</th>
-          <th>PROVINCE OF ORIGIN</th>
+          <th>PROVINCE OF ORIGIN&nbsp;&nbsp;&nbsp;</th>
+          <th>POSITION</th>
+          <th>USER TYPE</th>
         </tr>
       </thead>
       <tbody>
@@ -31,18 +56,15 @@
           <td><%= user.year %> <%= user.course.name %></td>
           <td><%= user.room %></td>
           <td><%= user.province %></td>
+          <td><%= user.position %></td>
+          <td><%= user.utype %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div align="right">
     <br>
-
-    <h1>Import Users</h1>
-    <%= form_tag import_users_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
-    <% end %>
-    <br>
-    
+    <%= button_to "Export to CSV", dormerlistcsv_path, :class => "exportButton" %>
   </div>
 </div>

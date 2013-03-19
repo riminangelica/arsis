@@ -56,3 +56,5 @@ gem 'jquery-rails'
 gem 'pdfkit'
 
 gem "prawnto_2", :require => "prawnto"
+
+gem 'best_in_place'

@@ -1,3 +1,39 @@
 // Place all the styles related to the dormer_import controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+tr.odd {
+	background-color: #0096a4;
+	color: white;
+}
+tr.odd td.sorting_1 {
+	background-color: #0096a4;
+	color: white;
+}
+
+tr.even {
+	background-color: #00b7c8;
+	color: white;
+}
+tr.even td.sorting_1 {
+	background-color: #00b7c8;
+	color: white;
+}
+
+thead {
+	background-color: #005a62;
+	color: white;
+}
+
+a:-webkit-any-link {
+color: #005a62;
+text-decoration: none;
+cursor: auto;
+}
+
+a:-webkit-any-link:hover {
+color: white;
+text-decoration: none;
+cursor: auto;
+}

@@ -16,156 +16,213 @@
  *= require jquery.ui.theme
  *= require_tree .
  */
-body{
-	background-color: #dedede;
-}
-.Login_Form{
-	text-align: center;
-	margin:auto;
-	margin-top:90px;	
-	width:446px;
-	height:451px;
-	background-color: #dedede;
-	padding-bottom:0px;
-	padding-top:0px;
-	background-image: url('login.png');
-}
+ body{
+ 	background-color: #dedede;
+ }
+ .Login_Form{
+ 	text-align: center;
+ 	margin:auto;
+ 	width:446px;
+ 	height:451px;
+ 	background-color: #dedede;
+ 	padding-bottom:0px;
+ 	padding-top:0px;
+ 	background-image: url('login.png');
+ }
 
-.ChangePW_Form{
-	text-align: center;
-	margin:auto;
-	margin-top:0px;	
-	width:446px;
-	height:280px;
-	background-color: #ececec;
-	padding-bottom:0px;
-	padding-top:0px;
-}
+ .Login_Notice{
+ 	margin:auto;
+ 	margin-top:70px;
+ }
 
-.CreateEvent_Form{
-	text-align:center;
-	margin:auto;
-	margin-top:0px;	
-	width:510px;
-	height:428px;
-	background-color: #ececec;
-	padding-bottom:0px;
-	padding-top:0px;
-}
+ .Profile{
+ 	position: center;
+ 	text-align: left;
+ 	width:735px;
+ 	height:224px;
+ 	margin: auto;
+ 	margin-top: 11px;
+ 	background-color: #ececec;
+ 	padding-bottom:0px;
+ 	padding-top:0px;
+ 	background-image: url('profile/arsis-profilebg.png');
+ 	background-repeat: no-repeat;
+ 	background-position: top;
+ 	background-size:735px 224px;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ 	vertical-align: middle;
+ 	border-spacing: 0px;
+ 	word-spacing: 0px;
+ 	border-width: 0px;
+ 	border-top-width: 0px;
+ 	border-top: 0px;
+ 	top: 0px;
+ 	border: 0px;
+ 	line-height: 15px;
+ }
 
-.loginText{
-	background-color: #ffffff;
-	border: Defaultpx inset #c0c0c0;
-	-webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
-  	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
-  	box-shadow: inset 2px 2px 2px 0px #dddddd;
-  	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
+ .post{
+ 	text-align: top;
+ }
 
-.Sign_Form{
-	text-align: left;
-	margin:auto;
-	margin-top:0px;	
-	width:841px;
-	background-color: #ececec;
-	padding-bottom:0.2px;
-	padding-top:0.1px;
-	padding-left:20px;
-}
+ .ChangePW_Form{
+ 	text-align: center;
+ 	margin:auto;
+ 	margin-top:0px;	
+ 	width:446px;
+ 	height:280px;
+ 	background-color: #ececec;
+ 	padding-bottom:0px;
+ 	padding-top:0px;
+ }
 
-.nav2{
-	text-align: left;
-	margin:auto;
-	margin-top:0px;	
-	width:841px;
-	background-color: #dedede;
-	padding-bottom:0.2px;
-	padding-top:0.2px;
-	padding-left:20px;
-	font: 0.75em 'Helvetica', Helvetica;
-}
+ .CreateEvent_Form{
+ 	text-align:center;
+ 	margin:auto;
+ 	margin-top:0px;	
+ 	width:510px;
+ 	height:380px;
+ 	background-color: #ececec;
+ 	padding-bottom:0px;
+ 	padding-top:0px;
+ }
 
-.Greeting{
-	font: 0.7em 'Helvetica', Helvetica;
-	font-weight: bold;
-	color: #474747;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
+ .loginText{
+ 	background-color: #ffffff;
+ 	border: Defaultpx inset #c0c0c0;
+ 	-webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+ 	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+ 	box-shadow: inset 2px 2px 2px 0px #dddddd;
+ 	-webkit-border-radius: 5px;
+ 	-moz-border-radius: 5px;
+ 	border-radius: 5px;
+ }
 
-.homebuttons{
-	font: 0.5em 'Helvetica', Helvetica;
-	font-weight:none;
-	color: #006699;
-	padding-left:20px;
-	width:841px;
-	margin:auto;
-	margin-top:0px;	
-}
+ .Sign_Form{
+ 	text-align: left;
+ 	margin:auto;
+ 	margin-top:0px;	
+ 	width:841px;
+ 	background-color: #ececec;
+ 	padding-bottom:15px;
+ 	padding-top:0.1px;
+ 	padding-left:20px;
+ }
 
-h1{
-	font: 2em 'Helvetica', Helvetica;
-	font-weight: bold;
-	color: #474747;
-	-webkit-margin-before: 0.4em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
+ .Profile_Form{
+ 	position: center;
+ 	margin:auto;
+ 	margin-top:0px;	
+ 	width:820px;
+ 	background-color: #ececec;
+ 	padding-bottom:30px;
+ 	padding-top:30px;
+ 	padding-left:px;
+ }
 
-h2{
-	font: 1em 'Helvetica W01 Cn', Helvetica;
-	color: #474747;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
+ .nav2{
+ 	text-align: left;
+ 	margin:auto;
+ 	margin-top:0px;	
+ 	width:841px;
+ 	background-color: #dedede;
+ 	padding-bottom:0.2px;
+ 	padding-top:0.2px;
+ 	padding-left:20px;
+ 	font: 0.75em 'Helvetica', Helvetica;
+ }
 
-.profile_head{
-	font: 1em 'Helvetica W01 Cn', Helvetica;
-	color: #006699;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	font-weight:bold;
-}
+ .Greeting{
+ 	font: 0.7em 'Helvetica', Helvetica;
+ 	font-weight: bold;
+ 	color: #474747;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ }
 
-.post{
-	font: 0.85em 'Helvetica W01 Cn', Helvetica;
-	color: #000000;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-}
+ .homebuttons{
+ 	font: 0.5em 'Helvetica', Helvetica;
+ 	font-weight:none;
+ 	color: #006699;
+ 	padding-left:20px;
+ 	width:841px;
+ 	margin:auto;
+ 	margin-top:0px;	
+ }
 
-.postevent{
-	font: 0.81em 'Helvetica W01 Cn', Helvetica;
-	color: #000000;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	margin-left:28px;
-}
+ h1{
+ 	font: 2em 'Helvetica', Helvetica;
+ 	font-weight: bold;
+ 	color: #474747;
+ 	-webkit-margin-before: 0.4em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ }
 
-.csvTable{
-	font: 1em 'Helvetica Neue', Helvetica;
-	color: #000000;
-	-webkit-margin-before: 0em;
-	-webkit-margin-after: 0em;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	margin-right:15px;
-	margin-bottom: 20px;
-}
+ h2{
+ 	font: 1em 'Helvetica W01 Cn', Helvetica;
+ 	color: #474747;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ }
 
+ .profile_head{
+ 	font: 1em 'Helvetica W01 Cn', Helvetica;
+ 	color: #006699;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ 	font-weight:bold;
+ }
+
+ .post{
+ 	font: 0.85em 'Helvetica W01 Cn', Helvetica;
+ 	color: #000000;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ 	margin-right:10px;
+ }
+
+ .postevent{
+ 	font: 0.81em 'Helvetica W01 Cn', Helvetica;
+ 	color: #000000;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ }
+
+ .csvTable{
+ 	font: 1em 'Helvetica Neue', Helvetica;
+ 	color: #000000;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ 	margin-right:15px;
+ 	margin-bottom: 20px;
+ }
+ .dormersTable{
+ 	font: 0.8em 'Helvetica Neue', Helvetica;
+ 	color: #000000;
+ 	-webkit-margin-before: 0em;
+ 	-webkit-margin-after: 0em;
+ 	-webkit-margin-start: 0px;
+ 	-webkit-margin-end: 0px;
+ 	margin-right:15px;
+ 	margin-bottom: 20px;
+ }
 .tealButton {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
 	background:-moz-linear-gradient( center top, #00a664 5%, #00a664 100% );
@@ -189,6 +246,8 @@ h2{
 	position:relative;
 	top:1px;
 }
+
+
 
 .exportButton {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #00a664), color-stop(1, #00a664) );
@@ -308,11 +367,33 @@ h2{
 	color: #474747;
 	text-decoration: none;
 } 
+.nav_links:hover{
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	text-decoration: none;
+} 
 .nav_links2{
 	font: 1em 'Helvetica W01 Cn', Helvetica;
 	color: #474747;
 	font-weight: bold;
+}
+
+.table li{
+	font: 1em 'Helvetica Neue', Helvetica;
+	display: inline;
+	margin-right:5px;
+
+}
+.table_links{
+	font: 1em 'Helvetica Neue', Helvetica;
+	color: #ffffff;
+	text-decoration: none;
 } 
+.table_links2{
+	font: 1em 'Helvetica Neue', Helvetica;
+	color: #ffffff;
+	font-weight: bold;
+}  
 
 .notice{
 	height:20px;
@@ -324,15 +405,25 @@ h2{
 	padding-bottom:4px;
 	padding-top:2px;
 }
-.valid_notice, .invalid_notice{
+.valid_notice{
 	height:20px;
-	width:200px;
+	width:350px;
 	margin:auto;
 	margin-top:8px;
 	margin-bottom:8px;
 	font: 1em 'Helvetica W01 Cn', Helvetica;
 	color: #474747;
 	padding-bottom:4px;
+	padding-top:2px;
+}
+.invalid_notice{
+	width:300px;
+	margin:auto;
+	margin-top:8px;
+	margin-bottom:8px;
+	font: 1em 'Helvetica W01 Cn', Helvetica;
+	color: #474747;
+	padding-bottom:0px;
 	padding-top:2px;
 }
 .notice, .invalid_notice p, .valid_notice p{
@@ -347,7 +438,6 @@ h2{
 .notice{
 	background-color: transparent;
 	margin-top:0px;
-	width:500px;
 	margin:auto;
 	margin-top:0px;
 	margin-bottom:0px;
@@ -373,4 +463,26 @@ h2{
 	margin:auto;
 	width:220px;
 	text-align:center;
+}
+
+.points1{
+	font: 0.8em 'Helvetica Neue', Helvetica;
+	color: #474747;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-bottom:0px;
+	margin-top:0px;
+	text-align: center;
+}
+
+.points2{
+	font: 4em 'Helvetica Neue', Helvetica;
+	color: #005a62;
+	font-weight: bold;
+	padding-bottom:0px;
+	padding-top:0px;
+	margin-bottom:0px;
+	margin-top:0px;
+	height:60px;
+	text-align: center;
 }

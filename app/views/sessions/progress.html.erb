@@ -1,43 +1,64 @@
 <div class="Sign_Form">
-  <h1>Track Progress</h1>
   <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
     $('#eventlist').dataTable({
       sPaginationType: "full_numbers",
-      bJQueryUI: true,
-      "sDom": 'T<"clear">lfrtip',
-      "oTableTools": {
-        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf"
-      }
+      //bJQueryUI: true,
     })
   });
   </script>
-  <div>
-  	<%= @totalpoints %>
+  <table border="0">
+    <tr>
+      <td width="100px" valign="top">
+        <table class="points">
+          <tr align="center"><br><br>
+            <div class="points1"><b>You have<br>accumulated</b><br></div>
+            <div class="points2"><%= @totalpoints %><br></div>
+            <div class="points1"><b><font size="4px">POINTS</font></b></div>
+          </tr>
+          <tr></tr>
+        </table>
+      </td>
+      <td width="710px" valign="top">
+        <h1><small>Events you have been a part of:</small></h1>
+       <div class="csvTable">
+        <table id="eventlist" class="display" border="0">
+          <thead>
+            <tr>
+              <th>Event ID&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Role</th>
+              <th>Points&nbsp;&nbsp;&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @attendances.each do |attendance| %>
+            <tr>
+              <td><%= attendance.event.id %></td>
+              <td><%= attendance.event.name %></td>
+              <td>
+                <% if attendance.event.starts_at.strftime("%b %d") == attendance.event.ends_at.strftime("%b %d") %>
+                  <%= attendance.event.starts_at.strftime("%b %d, %Y") %>
+                <% elsif attendance.event.starts_at.strftime("%b") == attendance.event.ends_at.strftime("%b") %>
+                  <%= attendance.event.starts_at.strftime("%b %d") %>-<%= attendance.event.ends_at.strftime("%d, %Y") %>
+                <% else %>
+                  <%= attendance.event.starts_at.strftime("%b %d") %>-<%= attendance.event.ends_at.strftime("%b %d, %Y") %>
+                <% end %>
+              </td>
+              <td><%= attendance.role %></td>
+              <td><%= attendance.points %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table><br><br><br>
+        <h2>ARSA records your participation in various events.
+          <br>Get points by even just attending an event!</h2>
+      </td>
+    </tr>
+    <tr colspan="3">
+    </tr>
   </div>
-  <div class="csvTable">
-    <table id="eventlist" class="display">
-      <thead>
-        <tr>
-          <th>Event ID</th>
-          <th>Event Name</th>
-          <th>Starts at</th>
-          <th>Ends at</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @attendances.each do |attendance| %>
-        <tr>
-          <td><%= attendance.event.id %></td>
-          <td><%= attendance.event.name %></td>
-          <td><%= attendance.event.starts_at.strftime("%b %d, %Y at %I:%M%p") %></td>
-          <td><%= attendance.event.ends_at.strftime("%b %d, %Y at %I:%M%p") %></td>
-          <td><%= attendance.role %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <br>
-  </div>
+
+</table>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310173940) do
+ActiveRecord::Schema.define(:version => 20130318050216) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -83,12 +83,18 @@ ActiveRecord::Schema.define(:version => 20130310173940) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.integer  "idnum"
     t.string   "firstname"
     t.string   "lastname"
@@ -107,6 +113,8 @@ ActiveRecord::Schema.define(:version => 20130310173940) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "position"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

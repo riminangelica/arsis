@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-	layout false
+	#layout true
   	before_filter :authenticate_user, :except => [ :login, :login_attempt, :logout]
 	before_filter :save_login_state, :only => [ :login, :login_attempt]
 
@@ -15,6 +15,12 @@ class SessionsController < ApplicationController
 
 	# View Profile Page
 	def profile
+		render :layout => "application"
+	end
+
+	# View Event Profile
+	def viewevent
+		@event = Event.find(params[:event_id])
 		render :layout => "application"
 	end
 
@@ -35,6 +41,12 @@ class SessionsController < ApplicationController
 		render :layout => "application"
 	end
 
+	def view_dorm_council
+		@users = User.where(:utype => "dorm_council")
+
+		render :layout => "application"
+	end
+
 	# View Event Calendar Page > Export to CSV Link
 	def event_to_csv
 		@event = Event.find(params[:id])
@@ -48,8 +60,32 @@ class SessionsController < ApplicationController
 
 		send_data csv_string,
 			:type => 'text/csv; charset=iso-88859-1; header=present',
-			:disposition => "attachment; filename=event_#{@event.id}.csv"
+			:disposition => "attachment; filename=Event_#{@event.id}_#{@event.name}.csv"
 	end
+
+	def dormerlist_to_csv
+		@users = User.order(:id)
+		csv_string = CSV.generate() do |csv|
+			@users.each do |user|
+			csv << [user.id,
+					user.firstname,
+					user.middlename,
+					user.lastname,
+					user.mobile,
+					user.email,
+					user.year,
+					user.course.name,
+					user.province,
+					user.room,
+					user.position,
+					user.utype]
+			end
+		end    
+		send_data csv_string,
+			:type => 'text/csv; charset=iso-88859-1; header=present',
+			:disposition => "attachment; filename=Official List of Resident Students.csv"
+	end
+
 
 	def upload_reg_file
 		@attendances = Attendance.all
@@ -65,11 +101,13 @@ class SessionsController < ApplicationController
 	end
 
 	def setting
+		@user = User.find_by_idnum(params[:idnum])
 		#Setting Page
 	    render :layout => "application"
 	end
 
 	def changepw
+		@user = User.find(params[:idnum])
 		render :layout => "application"
 		
 	end
@@ -80,7 +118,7 @@ class SessionsController < ApplicationController
 
 	def login
 		#Login Form
-		
+
 	end
 
 	def generatedb
@@ -93,7 +131,7 @@ class SessionsController < ApplicationController
 		if authorized_user
 			session[:user_id] = authorized_user.id
 			flash[:notice] = "Welcome to ARSIS! You are logged in as #{authorized_user.firstname}"
-			redirect_to(:action => 'profile')
+			redirect_to(:action => 'home')
 
 
 		else

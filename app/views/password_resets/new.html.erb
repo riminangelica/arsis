@@ -1,0 +1,11 @@
+<div class="Login_Form"><br>
+	<%= image_tag "login-logo.png" %>
+	<h1>Reset Password</h1>
+
+	<%= form_tag password_resets_path, :method => :post do %>
+		<h2>
+		<%= text_field_tag(:email, params[:email], :placeholder => 'EMAIL', :class => "loginText", :style => "text-align: Center" )%></h2>
+	<%= submit_tag "Reset Password", :class => "tealButton" %>
+	<% end %>
+	<%= button_to "Cancel", :home, :type => 'button', :class => "redButton", :style => "width: 231px"%>
+</div>

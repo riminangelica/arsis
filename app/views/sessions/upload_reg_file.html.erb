@@ -1,7 +1,7 @@
 <div class="Sign_Form">
   <center><h1>Upload Registration File</h1>
   <h2>Import a CSV File of your event's attendance.</h2><br>
-  <%= form_tag import_users_path, multipart: true do %>
+  <%= form_tag import_attendances_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>
     <% end %></center>
@@ -11,19 +11,12 @@
     $('#eventlist').dataTable({
       sPaginationType: "full_numbers",
       //bJQueryUI: true,
-      "sDom": 'T<"clear">lfrtip',
-      "oTableTools": {
-        "sSwfPath": "media/swf/copy_csv_xls_pdf.swf",
-        "sRowSelect": "multi"
-      },
-      "sScrollY": "200px",
-      "sDom": "frtiS",
-      "bDeferRender": true
+      
     })
   });
   </script>
   <h1><center><small>List of Attendances in all Events</small></center></h1>
-  <div class="csvTable">
+  <div class="dormersTable">
     <table id="eventlist" class="display">
       <thead>
         <tr>
@@ -33,7 +26,7 @@
           <th>Student ID</th>
           <th>Name</th>
           <th>Points</th>
-          <th>Roles</th>
+          <th>Role</th>
         </tr>
       </thead>
       <tbody>

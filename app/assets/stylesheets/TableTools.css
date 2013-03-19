@@ -102,7 +102,7 @@ a.DTTT_button:hover {
 button.DTTT_disabled,
 div.DTTT_disabled,
 a.DTTT_disabled {
-	color: #999;
+	color: #000;
 	border: 1px solid #d0d0d0;
 	
 	background: #ffffff; /* Old browsers */
@@ -278,7 +278,7 @@ div.DTTT_collection a.DTTT_button {
 	margin-left: -200px;
 	margin-top: -75px;
 	text-align: center;
-	color: #333;
+	color: #000;
 	padding: 10px 30px;
 
 	background: #ffffff; /* Old browsers */
