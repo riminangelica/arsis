@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319054610) do
+ActiveRecord::Schema.define(:version => 20130319062704) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20130319054610) do
     t.string   "utype"
     t.string   "middlename"
     t.string   "province"
-    t.boolean  "is_sec_gen"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
