@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	attr_accessible :id, :eventclass_id, :name, :starts_at, :ends_at, :allday, :venue, :is_open, :user_id
+	attr_accessible :id, :eventclass_id, :name, :starts_at, :ends_at, :venue, :is_open, :user_id
 	has_many :attendances
 	has_many :users, :through => :attendances
 	belongs_to :eventclass
@@ -30,7 +30,6 @@ class Event < ActiveRecord::Base
   		:description => self.description || "",
   		:start => starts_at.rfc822,
   		:end => ends_at.rfc822,
-  		:allDay => self.all_day,
   		:recurring => false,
   		:url => Rails.application.routes.url_helpers.event_path(id)
   	}
