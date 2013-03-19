@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318050216) do
+ActiveRecord::Schema.define(:version => 20130319054610) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20130318050216) do
     t.boolean  "is_open"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.boolean  "allday"
     t.datetime "starts_at"
     t.datetime "ends_at"
   end
