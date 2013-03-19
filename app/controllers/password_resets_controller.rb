@@ -40,11 +40,7 @@ class PasswordResetsController < ApplicationController
 	# 	redirect_to{reset_path(params[:email], @answer)}
 	# end
 	def reset
-		100.times {puts params[:id]}
-		answer = params[:password_resets][:answer]
-		100.times {puts answer}
 		@user = User.find_by_id(params[:password_resets][:id])
-		100.times {puts params[:answer]}
 		if @user
 			@user.send_password_reset 
 			flash[:notice] = "Email sent with password reset instructions."

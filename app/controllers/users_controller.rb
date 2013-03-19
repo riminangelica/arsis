@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.find_by_idnum(params[:user][:idnum])
     auth_code = AuthorizationCode.find_by_code(params[:authorization_code])
-    security = params[:user][:security]
+    #security = params[:security]
+    #security = User.find_by_security(@user.security)
     # Validates authorization code entered by Secretary General
 
     if @user == nil
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
       if auth_code
         @user.utype = 'sec_gen'
         
-        if !security.blank?
+        #if security
           if @user.update_attributes(params[:user])
             flash[:notice] = "Your account has been activated as Secretary General"
             flash[:color] = "valid"
@@ -31,12 +32,12 @@ class UsersController < ApplicationController
           flash[:notice] = "Form is invalid. Please check below for errors."
           flash[:color]= "invalid"
         end
-      else
-        flash[:notice] = "You already have an existing account."
-        flash[:color]= "invalid"
-      end
+      #else
+        # flash[:notice] = "You already have an existing account."
+        # flash[:color]= "invalid"
+      #end
     else
-      if !security.blank?
+      #if security
         if @user.update_attributes(params[:user])
           if @user.utype == 'dormer'
             flash[:notice] = "Your account has been activated as a dormer"
@@ -50,10 +51,10 @@ class UsersController < ApplicationController
           flash[:notice] = "Form is invalid. Please check below for errors."
           flash[:color]= "invalid"
         end
-      else
-        flash[:notice] = "You already have an existing account."
-        flash[:color]= "invalid"
-      end
+      #else
+        # flash[:notice] = "You already have an existing account."
+        # flash[:color]= "invalid"
+      #end
     end
 
   end
