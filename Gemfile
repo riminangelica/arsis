@@ -18,10 +18,10 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'bcrypt-ruby', :require => 'bcrypt' 
-  gem 'jquery-ui-rails'
-  gem 'jquery-datatables-rails'
 end
+gem 'bcrypt-ruby', :require => 'bcrypt' 
+gem 'jquery-ui-rails'
+gem 'jquery-datatables-rails'
 
 gem 'jquery-rails'
 
