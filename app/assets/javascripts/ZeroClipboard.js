@@ -128,7 +128,6 @@ ZeroClipboard_TableTools.Client.prototype = {
 			this.sized = true;
 		}
 		
-		// style.backgroundColor = '#f00'; // debug
 		if ( this.domElement ) {
 			this.domElement.appendChild(this.div);
 			this.div.innerHTML = this.getHTML( box.width, box.height );
