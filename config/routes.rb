@@ -9,6 +9,7 @@ UserAuth::Application.routes.draw do
 
   resources :attendances do
     collection { post :import }
+    collection {post :go}
   end
 
   resources :password_resets
@@ -19,6 +20,12 @@ UserAuth::Application.routes.draw do
 
   
   # SOA
+
+    # Attend with given Event ID and User ID
+  match '/attendances/create/:event_id/:user_id/:points/:role',
+    :controller => :attendances,
+    :action => "create",
+    :as => "create"
   # Search User via ID Number
   match '/users/id/:id',
     :controller => :users,
@@ -49,7 +56,27 @@ UserAuth::Application.routes.draw do
     :controller => :users,
     :action => "course"
 
-  
+
+  # Search Users under given Course ID
+  match '/events/id/:id',
+    :controller => :events,
+    :action => "id"
+
+  match '/events/name/:name',
+    :controller => :events,
+    :action => "name"
+
+  match '/events/eventclass/:eventclass_id',
+    :controller => :events,
+    :action => "eventclass"
+
+  match '/events/venue/:venue',
+    :controller => :events,
+    :action => "venue"
+
+
+
+
   
   match ':controller(/:action(/:id))(.:format)'
 

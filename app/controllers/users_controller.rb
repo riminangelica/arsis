@@ -136,9 +136,7 @@ def change_password
   def index
     @users = User.order(:idnum)
     respond_to do |format|
-      format.html
-      #format.csv { send_data @users.to_csv }
-      format.xls
+      format.html { render json: {:message => "Here are the details of all #{@users.size} users.", :users => @users }}
     end
   end
 
@@ -227,4 +225,5 @@ def change_password
       end
     end
   end
+
 end

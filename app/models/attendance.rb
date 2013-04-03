@@ -15,4 +15,8 @@ class Attendance < ActiveRecord::Base
 			attendance.save! :validate => false
 		end
 	end
+
+	def self.go(eid, uid, pts)
+		
+	end
 end

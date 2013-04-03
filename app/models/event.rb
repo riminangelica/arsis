@@ -23,18 +23,6 @@ class Event < ActiveRecord::Base
 
   # need to override the json view to return what full_calendar is expecting.
   # http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
-  def as_json(options = {})
-  	{
-  		:id => self.id,
-  		:title => self.title,
-  		:description => self.description || "",
-  		:start => starts_at.rfc822,
-  		:end => ends_at.rfc822,
-  		:recurring => false,
-  		:url => Rails.application.routes.url_helpers.event_path(id)
-  	}
-
-  end
   
   def self.format_date(date_time)
   	Time.at(date_time.to_i).to_formatted_s(:db)
