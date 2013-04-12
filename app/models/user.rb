@@ -14,18 +14,15 @@ class User < ActiveRecord::Base
 	# :url => "/assets/images/users/:id/:style/:basename.:extension",
 	# :path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension",
 	# default_url: "assets/attachment/missing_:style.png"
-	has_attached_file :asset
+
+	has_attached_file :image
     # add a delete_<asset_name> method: 
-    attr_accessor :delete_asset
-    before_validation { self.asset.clear if self.delete_asset == '1' }
+    attr_accessor :delete_image
+    before_validation { self.image.clear if self.delete_image == '1' }
 
-	has_attached_file :image, style: { small: "150x150#", large: "500x500>"},
-    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-    :url => "/system/:attachment/:id/:style/:filename"
-
-	validates_attachment_presence :image
-	validates_attachment_size :image, :less_than => 700.kilobytes
-	validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']	
+	# validates_attachment_presence :image
+	# validates_attachment_size :image, :less_than => 700.kilobytes
+	# validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']	
 
 	EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 	# NAME_REGEX = /^[0-9!@#$%]{2,4}$/i
