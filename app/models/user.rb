@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
 	# :url => "/assets/images/users/:id/:style/:basename.:extension",
 	# :path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension",
 	# default_url: "assets/attachment/missing_:style.png"
+	has_attached_file :asset
+    # add a delete_<asset_name> method: 
+    attr_accessor :delete_asset
+    before_validation { self.asset.clear if self.delete_asset == '1' }
 
 	has_attached_file :image, style: { small: "150x150#", large: "500x500>"},
     :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
