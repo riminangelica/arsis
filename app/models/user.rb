@@ -10,10 +10,14 @@ class User < ActiveRecord::Base
 	has_many :events, :through => :attendances
 	belongs_to :role
 
-	has_attached_file :image, :style => { :small => "150x150#", :large => "500x500>" },
-	:url => "/assets/images/users/:id/:style/:basename.:extension",
-	:path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension",
-	default_url: "assets/attachment/missing_:style.png"
+	# has_attached_file :image, :style => { :small => "150x150#", :large => "500x500>" },
+	# :url => "/assets/images/users/:id/:style/:basename.:extension",
+	# :path => ":rails_root/public/assets/images/users/:id/:style/:basename.:extension",
+	# default_url: "assets/attachment/missing_:style.png"
+
+	has_attached_file :image, style: { small: "150x150#", large: "500x500>"},
+    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+    :url => "/system/:attachment/:id/:style/:filename"
 
 	validates_attachment_presence :image
 	validates_attachment_size :image, :less_than => 700.kilobytes
