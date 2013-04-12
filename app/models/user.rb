@@ -1,4 +1,8 @@
+require 'paperclip'
 class User < ActiveRecord::Base
+
+	# Adds accessible attributes to user model
+	attr_accessible :idnum, :firstname, :middlename, :lastname, :year, :course_id, :province, :mobile, :email, :room, :password, :password_confirmation, :security, :answer, :is_sec_gen, :image, :position, :utype, :delete_image
 
 	attr_accessor :password
 
@@ -17,9 +21,7 @@ class User < ActiveRecord::Base
 
 	has_attached_file :image
     # add a delete_<asset_name> method: 
-    attr_accessor :delete_image
-    before_validation { self.image.clear if self.delete_image == '1' }
-
+    #before_validation { self.image.clear if self.delete_image == '1' }
 	# validates_attachment_presence :image
 	# validates_attachment_size :image, :less_than => 700.kilobytes
 	# validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']	
@@ -55,9 +57,6 @@ class User < ActiveRecord::Base
 	validates :security, :presence => true, :length => { :in => 2..80 }
 	# Answer
 	validates :answer, :presence => true, :length => { :in => 2..45 }
-
-	# Adds accessible attributes to user model
-	attr_accessible :idnum, :firstname, :middlename, :lastname, :year, :course_id, :province, :mobile, :email, :room, :password, :password_confirmation, :security, :answer, :is_sec_gen, :image, :position, :utype
 
 	# take a username/email and password to find out if that matches a user in the database
 	# Needs a query to match username/email and, 
